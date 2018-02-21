@@ -40,6 +40,15 @@ namespace FiveMinutes.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public IActionResult Index()
+        //{
+        //    var users = _userManager.Users.ToList();
+        //    Console.WriteLine(users);
+        //    return View(users);
+        //}
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
