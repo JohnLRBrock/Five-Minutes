@@ -41,13 +41,13 @@ namespace FiveMinutes.Controllers
         public string ErrorMessage { get; set; }
 
         //[HttpGet]
-        //[AllowAnonymous]
-        //public IActionResult Index()
-        //{
-        //    var users = _userManager.Users.ToList();
-        //    Console.WriteLine(users);
-        //    return View(users);
-        //}
+        [AllowAnonymous]
+        public IActionResult Index()
+        {
+            var users = _userManager.Users.Select( user => user.UserName).ToList();
+            ViewData["users"] = string.Join(", ", users);
+            return View();
+        }
 
         [HttpGet]
         [AllowAnonymous]
