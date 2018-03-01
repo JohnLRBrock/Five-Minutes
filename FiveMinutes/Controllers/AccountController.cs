@@ -40,11 +40,11 @@ namespace FiveMinutes.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
-        //[HttpGet]
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var users = _userManager.Users.Select( user => user.UserName).ToList();
+            var users = _userManager.Users.Select(user => user.UserName).ToList();
             ViewData["users"] = string.Join(", ", users);
             return View();
         }
