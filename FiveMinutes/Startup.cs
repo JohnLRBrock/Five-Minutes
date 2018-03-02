@@ -33,6 +33,11 @@ namespace FiveMinutes
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
