@@ -42,10 +42,13 @@ namespace FiveMinutes.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var users = _userManager.Users.Select(user => user.UserName).ToList();
-            ViewData["users"] = string.Join(", ", users);
+            //ViewData["users"] = users;
+            ViewData["usersString"] = string.Join(", ", users);
+            var currentUser = await _userManager.GetUserAsync(User);
+            ViewData["currentUserID"] = currentUser.Id;
             return View();
         }
 
