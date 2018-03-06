@@ -1,6 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "Account Index";
+    var users = ViewData["users"] as List<ApplicationUser>;
 }
-<p>@ViewData["usersString"]</p>
-<p>@ViewData["currentUserID"]</p>
+@foreach (var user in users)
+{
+    <a asp-controller="UserRelationships"
+       asp-action="Create"
+       asp-route-UserID="@ViewData["currentUserID"]"
+       asp-route-FriendID="@user.Id">
+        Send Friend Request to @user.UserName
+    </a>
+}

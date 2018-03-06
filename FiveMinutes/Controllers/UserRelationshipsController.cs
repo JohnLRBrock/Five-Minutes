@@ -42,7 +42,7 @@ namespace FiveMinutes.Controllers
             return View(userRelationship);
         }
 
-        // GET: UserRelationships/Create
+        // GET: UserRelationships/Create/UserID/FriendID
         public IActionResult Create()
         {
             return View();

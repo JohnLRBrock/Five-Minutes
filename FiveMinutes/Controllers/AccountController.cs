@@ -44,9 +44,8 @@ namespace FiveMinutes.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var users = _userManager.Users.Select(user => user.UserName).ToList();
-            //ViewData["users"] = users;
-            ViewData["usersString"] = string.Join(", ", users);
+            ViewData["users"] = _userManager.Users.Select(user => user.UserName).ToList();
+            //ViewData["usersString"] = string.Join(", ", users);
             var currentUser = await _userManager.GetUserAsync(User);
             ViewData["currentUserID"] = currentUser.Id;
             return View();
