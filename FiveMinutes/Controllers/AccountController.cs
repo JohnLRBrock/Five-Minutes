@@ -44,11 +44,15 @@ namespace FiveMinutes.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            ViewData["users"] = _userManager.Users.Select(user => user.UserName).ToList();
-            //ViewData["usersString"] = string.Join(", ", users);
+            var users = _userManager.Users.Select(user => user.UserName) as List<ApplicationUser>;
             var currentUser = await _userManager.GetUserAsync(User);
-            ViewData["currentUserID"] = currentUser.Id;
-            return View();
+
+            var model = new AccountIndexViewModel
+            {
+                Users = users,
+                UserID = currentUser.Id
+            };
+            return View(model);
         }
 
         [HttpGet]
