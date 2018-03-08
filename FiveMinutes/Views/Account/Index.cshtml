@@ -2,13 +2,16 @@
 @{
     ViewData["Title"] = "Account Index";
 }
-
-@foreach (var user in Model.Users)
-{
-    <a asp-controller="UserRelationships"
-       asp-action="Create"
-       asp-route-UserID="@Model.UserID"
-       asp-route-FriendID="@user.Id">
-        Send Friend Request to @user.UserName
-    </a>
-}
+<ul>
+    @foreach (var user in Model.Users)
+    {
+        <li>
+            <a asp-controller="UserRelationships"
+               asp-action="Create"
+               asp-route-UserID="@Model.UserID"
+               asp-route-FriendID="@user.Id">
+                Send Friend Request to @user.UserName
+            </a>
+        </li>
+    }
+</ul>

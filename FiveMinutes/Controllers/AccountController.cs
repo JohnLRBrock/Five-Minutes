@@ -44,7 +44,7 @@ namespace FiveMinutes.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var users = _userManager.Users.Select(user => user.UserName) as List<ApplicationUser>;
+            List<ApplicationUser> users = _userManager.Users.ToList();
             var currentUser = await _userManager.GetUserAsync(User);
 
             var model = new AccountIndexViewModel
