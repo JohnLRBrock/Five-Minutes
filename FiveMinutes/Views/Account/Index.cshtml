@@ -6,8 +6,7 @@
     @foreach (var user in Model.Users)
     {
         <li>
-            <a asp-controller="UserRelationships"
-               asp-action="Create"
+            <a asp-route="CreateUserRelationship"
                asp-route-UserID="@Model.UserID"
                asp-route-FriendID="@user.Id">
                 Send Friend Request to @user.UserName
